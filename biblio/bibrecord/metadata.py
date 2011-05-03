@@ -21,51 +21,40 @@ __all__ = [
 ### IMPLEMENTATION ###
 
 class MetadataCollection (dict):
+	"""
+	A set of metadata fields.
+	
+	This collection acts much like a dictionary, with metadata field names acting
+	as keys to metadata values. For convenience, methods are provided for
+	appending values (i.e. adding to a list of values for a given key), and
+	finding values based on key and attributes.
+	
+	Note this implementation assumes that order of metadata fields is irrelevant.
+	If it is relevant, then you should be dealing with pure XML.
+	
+	It's a bit difficult to know the correct semantics for returning values, as
+	a naked item, a list or failure are all valid results, making for 
+	
+	"""
 	
 	def __repr__ (self):
 		return "foo"
 		
-	def __str__ (self):
-		return self.__unicode__().encode ('ascii', 'replace')
+	def append (self, key, val):
+		self.setdefault (key, []).append (val)
+	
+	def get_as_list (self, key, default=[]):
+		val = self.get (key, None)
+		if key and (type(key) != ListType):
+			return [key]
+		else:
+			return default
 		
-	def __unicode__ (self):
-		pairs = []
-		for k, v in self.iteritems():
-			if type(v) == types.ListType:
-				v_str = u', '.join ([a.__repr__() for a in v])
-			else:
-				v_str = v.__unicode__()
-			pairs.append (u"'%s': '%s'" % (k, v_str))
-		pair_str = u", ".join(pairs)
-		return u"{%s}" % pair_str
-		
-	def creators (self, role=None):
-		if role:
-			return [x for x in self['creator'] if x.attribs.get('role') == role]
-		else:
-			return self['creator']
-			
-	def authors (self):
-		return self.creators(role='aut')
-
-	def identifiers (self, scheme=None):
-		if scheme:
-			return [x for x in self['identifier'] if x.attribs.get('scheme') == scheme]
-		else:
-			return self['identifier']
-			
-	def isbn (self):
-		return self.identifiers(scheme='ISBN')
-
-	def dates (self, event=None):
-		if event:
-			return [x for x in self['date'] if x.attribs.get('event') == event]
-		else:
-			return self['date']
-			
-	def publication_date (self):
-		return self.dates (event='publication')
-
+	def find_values (self, key, **kwargs):
+		for v in self.get_as_list (key):
+			for att, val in kwargs.iteritems():
+				if v.get_attrib (att) == val:
+					return v
 
 
 class MetadataValue (ReprMixin):
