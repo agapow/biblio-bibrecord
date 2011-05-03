@@ -1,0 +1,12 @@
+README.txt
+setup.py
+biblio/__init__.py
+biblio/bibrecord/__init__.py
+biblio_bibrecord.egg-info/PKG-INFO
+biblio_bibrecord.egg-info/SOURCES.txt
+biblio_bibrecord.egg-info/dependency_links.txt
+biblio_bibrecord.egg-info/entry_points.txt
+biblio_bibrecord.egg-info/namespace_packages.txt
+biblio_bibrecord.egg-info/not-zip-safe
+biblio_bibrecord.egg-info/requires.txt
+biblio_bibrecord.egg-info/top_level.txt

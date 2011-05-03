@@ -1,0 +1,24 @@
+Metadata-Version: 1.0
+Name: biblio-bibrecord
+Version: 0.1
+Summary: Data structures for representing bibliographic data
+Home-page: http://www.agapow.net/software/biblio-bibrecord
+Author: Paul-Michael Agapow
+Author-email: pma@agapow.net
+License: GPL
+Description: Introduction
+        ============
+        
+        dfsdf
+        
+        Changelog
+        =========
+        
+        0.1dev (unreleased)
+        -------------------
+        
+        - Initial release
+        
+Keywords: bibliographic metadata records
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
