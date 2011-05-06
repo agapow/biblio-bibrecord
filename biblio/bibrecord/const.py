@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Various module-wide constants.
-
 """
 
 __docformat__ = 'restructuredtext en'
@@ -22,6 +21,7 @@ __all__ = [
 ### CONSTANTS & DEFINES ###
 
 COLLAPSE_SPACE_RE = re.compile (r'\s+')
+WHITESPACE_RE = COLLAPSE_SPACE_RE
 
 
 ### IMPLEMENTATION ###

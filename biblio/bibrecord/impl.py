@@ -4,7 +4,6 @@
 Various (fragile) implementation details and utilities.
 
 Don't reply on these because they may go away.
-
 """
 # TODO: error-handling logic is correct?
 
@@ -54,8 +53,9 @@ class RawMixin (object):
 	"""
 	Provides objects with a 'raw' field for storing original values.
 	
-	Note that this does not need to be initialised in a subclass c'tor, the
-	``raw`` attribute is created is it is used.
+	This is intended for use where it is useful to consult the original and converted
+	forms of parsed data. Note that this does not need to be initialised in a
+	subclass c'tor, the ``raw`` attribute is created is it is used.
 	"""
 	
 	def get_raw (self):
@@ -79,6 +79,15 @@ def assert_or_raise (cond, error_cls=exceptions.RuntimeError, error_msg=None):
 		else:
 			error = error_cls()
 		raise error
+
+
+def make_list (x):
+	"""
+	If this isn't a list, make it one.
+	"""
+	if type (x) != type.ListType:
+		x = [x]
+	return x
 
 
 ### TEST & DEBUG ###
