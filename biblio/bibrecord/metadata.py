@@ -79,7 +79,7 @@ class MetadataCollection (dict):
 		"""
 		If the argument is not a MetadataValue, it is turned into one.
 		
-		Used for sanitizing the valuies stored in the collection. Not for external
+		Used for sanitizing the values stored in the collection. Not for external
 		application.
 		"""
 		if type (v) != MetadataValue:
